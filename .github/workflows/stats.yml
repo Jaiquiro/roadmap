@@ -23,6 +23,6 @@ jobs:
       - name: Commit and push changes
         - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: "Update stats"
+          commit_message: "Update statsto main"
           branch: main
         
