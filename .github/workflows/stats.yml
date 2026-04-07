@@ -1,33 +1,28 @@
-name: Stats
-
+name: stats
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    branches: [ main ]
 
 jobs:
   build:
-    if: github.repository == 'mouredev/roadmap-retos-programacion' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-
-    steps:
+    premissions:
+      contents: write 
+    steps: 
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/ checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/ setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: 3.11
 
-      - name: Run script
+      - name: Run stats script
         run: python ./Roadmap/stats.py
 
-      - name: Commit and Push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit and push changes
+        - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: Update stats
-          commit_user_name: Brais Moure [GitHub Actions]
-          commit_user_email: mouredev@gmail.com
-          commit_author: mouredev <mouredev@gmail.com>
+          commit_message: "Update stats"
+          branch: main
+        
